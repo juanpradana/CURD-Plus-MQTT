@@ -4,7 +4,7 @@ import Data from "../models/Data.js";
 // function get All Datas
 export const getDatas = async (req, res) => {
     try {
-        const datas = await Product.find();
+        const datas = await Data.find();
         res.json(datas);
     } catch (error) {
         res.status(500).json({message: error.message});
