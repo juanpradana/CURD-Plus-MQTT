@@ -11,6 +11,17 @@ export const getDatas = async (req, res) => {
     }
      
 }
+
+// function get last Data
+export const getLastData = async (req, res) => {
+    try {
+        const data = await Data.find().limit(1).sort({$natural:-1});
+        res.json(data);
+    } catch (error) {
+        res.status(404).json({message: error.message});
+    }
+     
+}
  
 // function get single Data
 export const getDataById = async (req, res) => {
@@ -25,12 +36,24 @@ export const getDataById = async (req, res) => {
  
 // function Create Data
 export const saveData = async (req, res) => {
-    const data = new Data(req.body);
-    try {
-        const savedData = await data.save();
-        res.status(201).json(savedData);
-    } catch (error) {
-        res.status(400).json({message: error.message});
+    if (req.body["ts"]) {
+        const data = new Data(req.body);
+        try {
+            const savedData = await data.save();
+            res.status(201).json(savedData);
+        } catch (error) {
+            res.status(400).json({message: error.message});
+        }
+    } else {
+        const data = new Data({
+            "values": req.body
+        });
+        try {
+            const savedData = await data.save();
+            res.status(201).json(savedData);
+        } catch (error) {
+            res.status(400).json({message: error.message});
+        }
     }
 }
  

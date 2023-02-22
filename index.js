@@ -6,11 +6,14 @@ import mongoose from "mongoose";
 import route from "./routes/index.js";
 //import cors
 import cors from "cors";
+// import dotenv
+import dotenv from "dotenv";
+dotenv.config();
 // construct express function
 const app = express();
- 
+
 // connect ke database mongoDB
-mongoose.connect("mongodb://localhost:27017/sawitData",{ 
+mongoose.connect(process.env.DB_ADDRESS,{ 
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

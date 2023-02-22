@@ -1,7 +1,8 @@
 // import express
 import express from "express";
 // import controllers
-import { getDatas, 
+import { getDatas,
+    getLastData,
     getDataById, 
     saveData, 
     updateData,
@@ -12,6 +13,8 @@ const router = express.Router();
  
 // Route get All Datas
 router.get('/', getDatas);
+// Route get All Datas
+router.get('/last', getLastData);
 // Route get single Data
 router.get('/:id', getDataById);
 // Route CREATE Data
