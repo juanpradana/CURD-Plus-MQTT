@@ -35,12 +35,22 @@ ubuntu 22.04
 
 ## mqtt broker
 install from https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-docker-compose-to-build-an-emqx-cluster
+- default dashboard username "admin" password "public", change whatever you want
+- give password on security-authentication
 
 ## clone repo
 - git clone https://github.com/juanpradana/backendZanDataC.git
 - cd backendZanDataC
 - npm i
 - npm run start
+
+## open port
+- 3000 backendDataBase
+- 1883 tcp
+- 8083 ws
+- 8084 wss
+- 8883 ssl
+- 18083 dashboardEMQX
 
 ## adding certificate
 - sudo apt-get update
