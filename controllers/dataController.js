@@ -46,6 +46,7 @@ export const saveData = async (req, res) => {
         }
     } else {
         const data = new Data({
+            "ts": Date.now(),
             "values": req.body
         });
         try {
