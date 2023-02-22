@@ -81,14 +81,3 @@ export const deleteData = async (req, res) => {
         res.status(400).json({message: error.message});
     }
 }
-
-// Make stream change for data model
-const dataChangeStream = Data.watch();
-
-// Event listener when collection changes
-dataChangeStream.on('change', change => {
-    console.log('Perubahan terjadi pada:');
-    if(change.operationType === 'insert') {
-        console.log(change.fullDocument);
-    }
-});
