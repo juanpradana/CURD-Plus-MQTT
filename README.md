@@ -36,6 +36,12 @@ ubuntu 22.04
 ## mqtt broker
 install from https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-docker-compose-to-build-an-emqx-cluster
 
+## clone repo
+- git clone https://github.com/juanpradana/backendZanDataC.git
+- cd backendZanDataC
+- npm i
+- npm run start
+
 ## adding certificate
 - sudo apt-get update
 - sudo apt-get install python3-certbot-nginx -y
