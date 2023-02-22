@@ -9,9 +9,6 @@
 ## install mongodb
 - ubuntu 22.04 https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 
-## mqtt broker
-install from https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-docker-compose-to-build-an-emqx-cluster
-
 ## prepare
 - install mongodb
 - change mongod.cfg or mongod.conf, adding:
@@ -23,6 +20,9 @@ install from https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-doc
 - mongosh "mongodb://127.0.0.1:27017/myData"
 - rs.initiate()
 - rs.status()
+
+## mqtt broker
+install from https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-docker-compose-to-build-an-emqx-cluster
 
 ## adding certificate
 - sudo apt-get update
