@@ -42,6 +42,7 @@ install from https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-doc
 - git clone https://github.com/juanpradana/backendZanDataC.git
 - cd backendZanDataC
 - npm i
+- create .env file, include DB_ADDRESS='', ADDRESS_MQTT='', QUERY_TOPIC='', DB_USER='', DB_PASSWORD=''
 - npm run start
 
 ## open port
