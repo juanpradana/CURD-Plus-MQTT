@@ -4,6 +4,7 @@
 install from https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-docker-compose-to-build-an-emqx-cluster
 
 ## prepare
+- install mongodb
 - change mongod.cfg or mongod.conf, adding:
   
   replication:
