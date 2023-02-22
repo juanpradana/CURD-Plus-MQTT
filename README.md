@@ -1,5 +1,14 @@
 # backendZanDataC
 
+## install node.js
+- sudo apt update
+- sudo apt install nodejs
+- node -v
+- sudo apt install npm
+
+## install mongodb
+- ubuntu 22.04 https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+
 ## mqtt broker
 install from https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-docker-compose-to-build-an-emqx-cluster
 
