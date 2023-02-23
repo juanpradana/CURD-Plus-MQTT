@@ -87,7 +87,6 @@ install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-d
   Value:<IP Server>
   
   2
-  
   hostname: www
   TTL: 14440
   Type: CNAME
