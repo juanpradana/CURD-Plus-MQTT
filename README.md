@@ -14,7 +14,7 @@ using `/data` endpoint
 | PATCH       | updateData      | /:id          | json     | {"ts":number, "values":Object} |
 | DELETE      | deleteData      | /:id          | -        | -                              |
 
-if "ts" not included, it will declared by system automaticaly.
+if "ts" (timestamp) not included, it will declared by system automaticaly.
 
 ## MQTT feature
 publish latest data from mongoDB while data changes because insert.
