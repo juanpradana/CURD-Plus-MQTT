@@ -1,4 +1,4 @@
-# backendZanDataC
+# CURD-Plus-MQTT
 __This project was created solely because the developer felt the stress.__
 
 Inspired by Thingsboard Platform.
