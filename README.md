@@ -75,8 +75,8 @@ install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-d
   DB_ADDRESS='mongodb-address-URL'
   ADDRESS_MQTT='mqtt-address'
   QUERY_TOPIC='telemetry-topic'
-  DB_USER='mqtt-username'
-  DB_PASSWORD='mqtt-password'
+  MQTT_USER='mqtt-username'
+  MQTT_PASSWORD='mqtt-password'
   ```
 - `npm run start`
 

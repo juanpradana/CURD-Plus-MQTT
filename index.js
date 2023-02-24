@@ -34,7 +34,7 @@ app.use('/data',route);
 app.listen('3000',()=> console.log('Server Running at port: 3000'));
 
 // connect to mqtt
-const mqttClient = connect(process.env.ADDRESS_MQTT, { username: process.env.DB_USER, password: process.env.DB_PASSWORD });
+const mqttClient = connect(process.env.ADDRESS_MQTT, { username: process.env.MQTT_USER, password: process.env.MQTT_PASSWORD });
 const queryTopic = process.env.QUERY_TOPIC;
 
 // connecting to mqtt broker
