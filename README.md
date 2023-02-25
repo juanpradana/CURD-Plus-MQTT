@@ -143,3 +143,8 @@ install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-d
 - [ ] implement username and password on mongoDB
 - [ ] change backendCURD from `http` into `https`
 - [ ] change mqtt from `ws` into `wss`
+
+# Got Trouble?
+## Error: listen EACCES: permission denied 0.0.0.0:80
+- `sudo apt-get install libcap2-bin`
+- ```sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\`` ```
