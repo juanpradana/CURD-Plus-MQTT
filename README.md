@@ -20,6 +20,8 @@ if "ts" (timestamp) not included, it will declared by system automaticaly.
 
 ## MQTT feature
 publish latest data from mongoDB while data changes because insert.
+- `ws://yourdomain.com:8083/mqtt`
+- `wss://yourdomain.com:8084/mqtt`
 
 ## install node.js
 - `sudo apt update`
@@ -139,6 +141,10 @@ to `server_name yourDomain.com www.yourDomain.com;` then save
 - `sudo apt-get install python3-certbot-nginx -y`
 - `sudo certbot --nginx -d yourDomain.com -d www.yourDomain.com`
 
+## implement SSL WS
+- use cert from `/etc/letsencrypt/live/yourdomain.com/fullchain.pem` for TLS Cert EMQX. you can change on dashboard-listeners-wss default.
+- use cert from `/etc/letsencrypt/live/yourdomain.com/privkey.pem` for TLS Key EMQX. you can change on dashboard-listeners-wss default.
+
 # Todo
 ## __Start from Windows__
 - [X] install Node JS
@@ -170,7 +176,7 @@ to `server_name yourDomain.com www.yourDomain.com;` then save
 - [X] setting DNS domain, routing server to domain
 - [ ] implement username and password on mongoDB
 - [X] change backendCURD from `http` into `https`
-- [ ] change mqtt from `ws` into `wss`
+- [X] change mqtt from `ws` into `wss`
 
 # Got Trouble?
 ## Error: listen EACCES: permission denied 0.0.0.0:80
