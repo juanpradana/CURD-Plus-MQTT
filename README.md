@@ -69,8 +69,8 @@ install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-d
 - give password on security-authentication!
 
 ## clone repo, install, and running
-- `git clone https://github.com/juanpradana/backendZanDataC.git`
-- `cd backendZanDataC`
+- `git clone https://github.com/juanpradana/CURD-Plus-MQTT.git`
+- `cd CURD-Plus-MQTT`
 - `npm i`
 - create .env file:
   ```text
