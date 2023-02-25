@@ -110,7 +110,7 @@ install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-d
 - `sudo apt update`
 - `sudo apt-get install nginx -y`
 - `sudo systemctl status nginx`
-- `cat /etc/nginx/sites-available/default` untuk melihat isi file
+- `cat /etc/nginx/sites-available/default` to view the contents of the file
 - `sudo nano /etc/nginx/sites-available/default` change part of:
 ```text
 location / {
@@ -169,7 +169,7 @@ to `server_name yourDomain.com www.yourDomain.com;` then save
 - [X] testing both of CURD and mqtt by ip server
 - [X] setting DNS domain, routing server to domain
 - [ ] implement username and password on mongoDB
-- [ ] change backendCURD from `http` into `https`
+- [X] change backendCURD from `http` into `https`
 - [ ] change mqtt from `ws` into `wss`
 
 # Got Trouble?
