@@ -37,8 +37,9 @@ publish latest data from mongoDB while data changes because insert.
   replication:
     replSetName: rs0
     ```
-- `sudo su`
-- `mongosh "mongodb://127.0.0.1:27017/myData"`
+- `sudo systemctl restart mongod`
+- `sudo systemctl status mongod`
+- `sudo mongosh "mongodb://127.0.0.1:27017/myData"`
 - `rs.initiate()`
 - `rs.status()`
 
