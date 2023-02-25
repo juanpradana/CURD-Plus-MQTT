@@ -56,7 +56,8 @@ install docker for ubuntu 22.04
 - `sudo systemctl enable docker`
 
 ## open the port
-- 3000 __backendDataBase__
+- 80 __http__
+- 443 __https__
 - 1883 __tcp__
 - 8083 __ws__
 - 8084 __wss__
@@ -105,11 +106,38 @@ install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-d
 - MX record: a record that directs email to a specific mail server.
 - NS record: a record that stores information regarding which Authoritative Name Server is responsible for a particular domain.
 
+## Reverse Proxy
+- `sudo apt update`
+- `sudo apt-get install nginx -y`
+- `sudo systemctl status nginx`
+- `cat /etc/nginx/sites-available/default` untuk melihat isi file
+- `sudo nano /etc/nginx/sites-available/default` change part of:
+```text
+location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+}
+```
+into:
+```text
+        location / {
+                proxy_pass http://localhost:3000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+```
+- change `server_name _;`
+to `server_name yourDomain.com www.yourDomain.com;` then save
+- `sudo systemctl restart nginx`
 
-~## adding certificate for SSL~
-~- sudo apt-get update~
-~- sudo apt-get install python3-certbot-nginx -y~
-~- sudo certbot --nginx -d <yourdomain.com> -d <www.yourdomain.com>~
+## implement SSL http
+- `sudo apt-get update`
+- `sudo apt-get install python3-certbot-nginx -y`
+- `sudo certbot --nginx -d yourDomain.com -d www.yourDomain.com`
 
 # Todo
 ## __Start from Windows__
