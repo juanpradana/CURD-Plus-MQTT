@@ -66,7 +66,7 @@ db.createUser({
 - `exit`
 ---
 - `sudo su`
-- `sudo mkdir -p /opt/mongodb/keyfile`
+- `mkdir -p /opt/mongodb/keyfile`
 - `openssl rand -base64 741 > /opt/mongodb/keyfile/mongodb-keyfile`
 - `chmod 600 /opt/mongodb/keyfile/mongodb-keyfile`
 - `chown mongodb:mongodb /opt/mongodb/keyfile/mongodb-keyfile`
@@ -84,9 +84,8 @@ db.createUser({
     authorization: enabled
     keyFile: /opt/mongodb/keyfile/mongodb-keyfile
     ```
- - `exit`
- ---
  - `sudo systemctl restart mongod`
+ - `sudo systemctl status mongod`
 
 ## install docker
 install docker for ubuntu 22.04
@@ -126,6 +125,8 @@ install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-d
   MQTT_USER='mqtt-username'
   MQTT_PASSWORD='mqtt-password'
   ```
+  if use mqtt local, use __ws__ protocol
+  
   _DB_ADDRESS example_:
   - `mongodb://127.0.0.1:27017/myData?replicaSet=rs0`
   - `mongodb://yourusername:yourpassword@127.0.0.1:27017/myData?replicaSet=rs0&authSource=admin`
@@ -220,7 +221,7 @@ to `server_name yourDomain.com www.yourDomain.com;` then save
 - [X] clone repo, install, and running
 - [X] testing both of CURD and mqtt by ip server
 - [X] setting DNS domain, routing server to domain
-- [ ] implement username and password on mongoDB
+- [X] implement username and password on mongoDB
 - [X] change backendCURD from `http` into `https`
 - [X] change mqtt from `ws` into `wss`
 
