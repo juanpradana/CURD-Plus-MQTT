@@ -102,11 +102,9 @@ install docker for ubuntu 22.04
 ## open the port
 - 80 __http__
 - 443 __https__
-- 1883 __tcp__
 - 8083 __ws__
 - 8084 __wss__
-- 8883 __ssl__
-- 18083 __dashboardEMQX__
+- 27017 __mongodb__
 
 ## mqtt broker
 install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-docker-compose-to-build-an-emqx-cluster)
@@ -235,6 +233,9 @@ Value:<your IP Server>
 ## implement SSL WS
 - use cert from `/etc/letsencrypt/live/yourdomain.com/fullchain.pem` for TLS Cert EMQX. you can change on dashboard-listeners-wss default.
 - use cert from `/etc/letsencrypt/live/yourdomain.com/privkey.pem` for TLS Key EMQX. you can change on dashboard-listeners-wss default.
+
+## want to access Database?
+- `mongosh 'mongodb://yourusername:yourpassword@yourDomain.com:27017/myData?replicaSet=rs0&authSource=admin&directConnection=true'`
 
 # Todo
 ## __Start from Windows__
