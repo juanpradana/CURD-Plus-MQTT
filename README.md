@@ -268,6 +268,7 @@ Value:<your IP Server>
 - [X] implement username and password on mongoDB
 - [X] change backendCURD from `http` into `https`
 - [X] change mqtt from `ws` into `wss`
+- [X] implement subdomain for emqx
 
 # Got Trouble?
 ## Error: listen EACCES: permission denied 0.0.0.0:80
