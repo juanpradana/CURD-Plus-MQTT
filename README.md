@@ -188,6 +188,50 @@ to `server_name yourDomain.com www.yourDomain.com;` then save
 - `sudo apt-get install python3-certbot-nginx -y`
 - `sudo certbot --nginx -d yourDomain.com -d www.yourDomain.com`
 
+## implement subdomain for emqx
+- `sudo nano /etc/nginx/sites-available/emqx`
+- put this configuration:
+```text
+server {
+        server_name emqx.yourDomain.com;
+
+        location / {
+                proxy_pass http://localhost:18083;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/farzani.my.id/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/farzani.my.id/privkey.pem; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = emqx.yourDomain.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+    listen 80;
+    server_name emqx.yourDomain.com;
+    return 404; # managed by Certbot
+
+}
+```
+- `sudo ln -s /etc/nginx/sites-available/emqx /etc/nginx/sites-enabled/`
+- `sudo certbot --nginx -d yourDomain.com -d www.yourDomain.com -d emqx.yourDomain.com`
+- `sudo systemctl restart nginx`
+at your domain panel, add DNS record:
+```text
+hostname: emqx
+TTL: 14440
+Type: A
+Value:<your IP Server>
+```
+
 ## implement SSL WS
 - use cert from `/etc/letsencrypt/live/yourdomain.com/fullchain.pem` for TLS Cert EMQX. you can change on dashboard-listeners-wss default.
 - use cert from `/etc/letsencrypt/live/yourdomain.com/privkey.pem` for TLS Key EMQX. you can change on dashboard-listeners-wss default.
