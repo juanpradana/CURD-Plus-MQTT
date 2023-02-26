@@ -34,7 +34,7 @@ publish latest data from mongoDB while data changes because insert.
 
 ### change Database type
 - install mongodb
-- change mongod.cfg or mongod.conf, adding:
+- change mongod.cfg or mongod.conf, add:
   ```text
   replication:
     replSetName: rs0
@@ -44,6 +44,49 @@ publish latest data from mongoDB while data changes because insert.
 - `sudo mongosh "mongodb://127.0.0.1:27017/myData"`
 - `rs.initiate()`
 - `rs.status()`
+
+### apply authentication
+- change mongod.cfg or mongod.conf, delete:
+  ```text
+  replication:
+    replSetName: rs0
+    ```
+- `sudo systemctl restart mongod`
+- `sudo systemctl status mongod`
+---
+- `sudo mongosh`
+- use admin
+```text
+db.createUser({
+  user: "yourusername",
+  pwd: "yourpassword",
+  roles: [ { role: "root", db: "admin" } ]
+})
+```
+- `exit`
+---
+- `sudo su`
+- `sudo mkdir -p /opt/mongodb/keyfile`
+- `openssl rand -base64 741 > /opt/mongodb/keyfile/mongodb-keyfile`
+- `chmod 600 /opt/mongodb/keyfile/mongodb-keyfile`
+- `chown mongodb:mongodb /opt/mongodb/keyfile/mongodb-keyfile`
+- `exit`
+---
+- `sudo nano /etc/mongod.conf`
+- change mongod.cfg or mongod.conf, add:
+  ```text
+  replication:
+    replSetName: rs0
+    ```
+  and
+  ```text
+  security:
+    authorization: enabled
+    keyFile: /opt/mongodb/keyfile/mongodb-keyfile
+    ```
+ - `exit`
+ ---
+ - `sudo systemctl restart mongod`
 
 ## install docker
 install docker for ubuntu 22.04
@@ -83,6 +126,9 @@ install [EMQX](https://www.emqx.io/docs/en/v5.0/deploy/install-docker.html#use-d
   MQTT_USER='mqtt-username'
   MQTT_PASSWORD='mqtt-password'
   ```
+  _DB_ADDRESS example_:
+  - `mongodb://127.0.0.1:27017/myData?replicaSet=rs0`
+  - `mongodb://yourusername:yourpassword@127.0.0.1:27017/myData?replicaSet=rs0&authSource=admin`
 - `npm run start`
 
 ## setting DNS Domain
