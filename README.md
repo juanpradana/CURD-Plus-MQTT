@@ -186,7 +186,7 @@ to `server_name yourDomain.com www.yourDomain.com;` then save
 - `sudo apt-get install python3-certbot-nginx -y`
 - `sudo certbot --nginx -d yourDomain.com -d www.yourDomain.com`
 
-## implement subdomain for emqx
+## implement subdomain and SSL for emqx
 - `sudo nano /etc/nginx/sites-available/emqx`
 - put this configuration:
 ```text
@@ -203,8 +203,8 @@ server {
         }
 
     listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/farzani.my.id/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/farzani.my.id/privkey.pem; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/yourDomain.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/yourDomain.com/privkey.pem; # managed by Certbot
 
 
 }
@@ -231,8 +231,8 @@ Value:<your IP Server>
 ```
 
 ## implement SSL WS
-- use cert from `/etc/letsencrypt/live/yourdomain.com/fullchain.pem` for TLS Cert EMQX. you can change on dashboard-listeners-wss default.
-- use cert from `/etc/letsencrypt/live/yourdomain.com/privkey.pem` for TLS Key EMQX. you can change on dashboard-listeners-wss default.
+- use cert from `/etc/letsencrypt/live/yourDomain.com/fullchain.pem` for TLS Cert EMQX. you can change on dashboard-listeners-wss default.
+- use cert from `/etc/letsencrypt/live/yourDomain.com/privkey.pem` for TLS Key EMQX. you can change on dashboard-listeners-wss default.
 
 ## want to access Database?
 - `mongosh 'mongodb://yourusername:yourpassword@yourDomain.com:27017/myData?replicaSet=rs0&authSource=admin&directConnection=true'`
