@@ -57,6 +57,29 @@ export const saveData = async (req, res) => {
         }
     }
 }
+
+export const saveDataTelemetry = async (req, res) => {
+    if (req.body["ts"]) {
+        const data = new Data(req.body);
+        try {
+            const savedData = await data.save();
+            res.status(201).end();
+        } catch (error) {
+            res.status(400).json({message: error.message});
+        }
+    } else {
+        const data = new Data({
+            "ts": Date.now(),
+            "values": req.body
+        });
+        try {
+            const savedData = await data.save();
+            res.status(201).end();
+        } catch (error) {
+            res.status(400).json({message: error.message});
+        }
+    }
+}
  
 // function Update Data
 export const updateData = async (req, res) => {

@@ -4,7 +4,8 @@ import express from "express";
 import { getDatas,
     getLastData,
     getDataById, 
-    saveData, 
+    saveData,
+    saveDataTelemetry,
     updateData,
     deleteData } from "../controllers/dataController.js";
  
@@ -19,6 +20,7 @@ router.get('/last', getLastData);
 router.get('/:id', getDataById);
 // Route CREATE Data
 router.post('/', saveData);
+router.post('/telemetry', saveDataTelemetry);
 // Route UPDATE Data
 router.patch('/:id', updateData);
 // Route DELETE Data
