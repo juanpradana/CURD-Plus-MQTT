@@ -9,12 +9,13 @@ Project running on __ubuntu server 22.04__
 using `/data` endpoint
 | **Methods** | **Funtions**    | **Endpoint**  | **Body** | **Data** |
 | ----------- | --------------- | ------------  | -------- | -------------------------------------------- |
-| GET         | getDatas        | /             | -        | -                                            |
-| GET         | getLastData     | /last         | -        | -                                            |
-| GET         | getDataById     | /:id          | -        | -                                            |
-| POST        | saveData        | /             | json     | {"ts":number, "values":Object} or { Obejct } |
-| PATCH       | updateData      | /:id          | json     | {"ts":number, "values":Object}               |
-| DELETE      | deleteData      | /:id          | -        | -                                            |
+| GET         | getDatas        | /data              | -        | -                                            |
+| GET         | getLastData     | /data/last         | -        | -                                            |
+| GET         | getDataById     | /data/:id          | -        | -                                            |
+| POST        | saveData        | /data              | json     | {"ts":number, "values":Object} or { Obejct } |
+| POST        | saveData        | /data/telemetry    | json     | {"ts":number, "values":Object} or { Obejct } |
+| PATCH       | updateData      | /data/:id          | json     | {"ts":number, "values":Object}               |
+| DELETE      | deleteData      | /data/:id          | -        | -                                            |
 
 if "ts" (timestamp) not included, it will declared by system automaticaly.
 
