@@ -40,7 +40,7 @@ export const saveData = async (req, res) => {
         const data = new Data(req.body);
         try {
             const savedData = await data.save();
-            res.status(201).json(savedData);
+            res.status(200).json(savedData);
         } catch (error) {
             res.status(400).json({message: error.message});
         }
@@ -51,7 +51,7 @@ export const saveData = async (req, res) => {
         });
         try {
             const savedData = await data.save();
-            res.status(201).json(savedData);
+            res.status(200).json(savedData);
         } catch (error) {
             res.status(400).json({message: error.message});
         }
