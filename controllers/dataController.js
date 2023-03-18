@@ -3,13 +3,21 @@ import Data from "../models/Data.js";
  
 // function get All Datas
 export const getDatas = async (req, res) => {
-    try {
-        const datas = await Data.find().sort({ts: -1});
-        res.json(datas);
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
-     
+    if (req.query.limit){
+        try {
+            const datas = await Data.find().sort({ts: -1}).limit(req.query.limit);
+            res.json(datas);
+        } catch (error) {
+            res.status(500).json({message: error.message});
+        }
+    } else {
+        try {
+            const datas = await Data.find().sort({ts: -1});
+            res.json(datas);
+        } catch (error) {
+            res.status(500).json({message: error.message});
+        }
+    } 
 }
 
 // function get last Data
