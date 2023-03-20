@@ -272,6 +272,10 @@ Value:<your IP Server>
 - [X] change mqtt from `ws` into `wss`
 - [X] implement subdomain for emqx
 
+## **Result Deploy Dashboard**
+![OnPaste 20230320-205041](https://user-images.githubusercontent.com/30497994/226360228-6be1cb9a-6d57-4461-8b2e-cb34f0bdd142.png)
+
+
 # Got Trouble?
 ## Error: listen EACCES: permission denied 0.0.0.0:80
 - `sudo apt-get install libcap2-bin`
